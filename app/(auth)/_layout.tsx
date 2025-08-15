@@ -1,0 +1,15 @@
+import { Stack } from "expo-router";
+import React from "react";
+
+const AuthLayout = () => {
+  return (
+    <Stack
+      screenOptions={{ headerShown: false, animation: "fade_from_bottom" }}
+    >
+      <Stack.Screen name="login" options={{ title: "Lakhini" }} />
+      <Stack.Screen name="register" />
+    </Stack>
+  );
+};
+
+export default AuthLayout;
