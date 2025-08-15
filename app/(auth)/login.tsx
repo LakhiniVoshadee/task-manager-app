@@ -7,6 +7,14 @@ const Login = () => {
   return (
     <View className="flex-1 w-full justify-center align-items-center">
       <Text className="text-4xl text-center">Login</Text>
+      <Pressable>
+        <Text
+          className="text-white text-center"
+          onPress={() => router.push("/home")}
+        >
+          Go to Home
+        </Text>
+      </Pressable>
       <Pressable
         className="bg-blue-500 p-4 rounded"
         onPress={() => router.push("/register")}
