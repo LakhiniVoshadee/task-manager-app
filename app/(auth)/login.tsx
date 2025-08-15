@@ -18,7 +18,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
-    if (isLoading) return; 
+    if (isLoading) return;
     setIsLoading(true);
     await login(email, password)
       .then((res) => {
@@ -65,12 +65,9 @@ const Login = () => {
             <Text className="text-white text-center font-medium">Login</Text>
           )}
         </TouchableOpacity>
-        <Pressable
-          className="mt-4"
-          onPress={() => router.push("/register")}
-        >
+        <Pressable className="mt-4" onPress={() => router.push("/register")}>
           <Text className="text-indigo-600 text-center font-medium">
-            Don't have an account? Register
+            Do not have an account? Register
           </Text>
         </Pressable>
       </View>
