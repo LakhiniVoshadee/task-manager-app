@@ -1,10 +1,27 @@
+import { useAuth } from "@/context/AuthContext";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import { Tabs } from "expo-router";
-import React from "react";
-import { SafeAreaView } from "react-native";
+import { Tabs, useRouter } from "expo-router";
+import React, { useEffect } from "react";
+import { ActivityIndicator, SafeAreaView } from "react-native";
 
 const DashBoardLayout = () => {
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login");
+    }
+  }, [user, loading]);
+  if (loading) {
+    return (
+      <view className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" />
+      </view>
+    );
+  }
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <Tabs
@@ -16,7 +33,7 @@ const DashBoardLayout = () => {
             backgroundColor: "#FFFFFF",
             borderTopWidth: 0,
             elevation: 0,
-          }
+          },
         }}
       >
         <Tabs.Screen
