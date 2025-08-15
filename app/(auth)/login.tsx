@@ -18,8 +18,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
-    if (isLoading) return; // Prevent multiple submissions
-
+    if (isLoading) return; 
     setIsLoading(true);
     await login(email, password)
       .then((res) => {
@@ -71,7 +70,7 @@ const Login = () => {
           onPress={() => router.push("/register")}
         >
           <Text className="text-indigo-600 text-center font-medium">
-              Don't have an account? Register
+            Don't have an account? Register
           </Text>
         </Pressable>
       </View>

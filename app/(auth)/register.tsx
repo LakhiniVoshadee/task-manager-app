@@ -47,20 +47,20 @@ const Register = () => {
 
         <TextInput
           placeholder="Email"
-          className="border border-gray-200 bg-gray-100 rounded-md p-3 mb-4 text-base"
+          className="border border-gray-200 bg-blue-100 rounded-md p-3 mb-4 text-base text-black"
           value={email}
           onChangeText={setEmail}
         />
         <TextInput
           placeholder="Password"
-          className="border border-gray-200 bg-gray-100 rounded-md p-3 mb-4 text-base"
+          className="border border-gray-200 bg-blue-100 rounded-md p-3 mb-4 text-base text-black"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
         <TextInput
           placeholder="Confirm Password"
-          className="border border-gray-200 bg-gray-100 rounded-md p-3 mb-6 text-base"
+          className="border border-gray-200 bg-blue-100 rounded-md p-3 mb-6 text-base"
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           secureTextEntry
