@@ -1,6 +1,7 @@
-import { useLocalSearchParams } from "expo-router";
+import { createTask } from "@/services/taskService";
+import { router, useLocalSearchParams } from "expo-router";
 import React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const TaskFormScreen = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -9,6 +10,22 @@ const TaskFormScreen = () => {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
 
+  const handleSubmit = async () => {
+    // validations
+    if (!title.trim()) {
+      Alert.alert("Validation Error", "Title is required.");
+      return;
+    }
+    try {
+      if (isNew) {
+        await createTask({ title, description });
+      }
+      router.back();
+    } catch (err) {
+      console.error("Error creating task:", err);
+      Alert.alert("Error", "Could not create task.");
+    }
+  };
   return (
     <View className="flex-1 bg-gray-100 p-6">
       <Text className="text-2xl font-bold text-gray-800 text-center mb-8 tracking-tight">
@@ -32,7 +49,10 @@ const TaskFormScreen = () => {
         placeholderTextColor="#9CA3AF"
       />
 
-      <TouchableOpacity className="bg-indigo-600 py-4 rounded-xl shadow-md">
+      <TouchableOpacity
+        className="bg-indigo-600 py-4 rounded-xl shadow-md"
+        onPress={handleSubmit}
+      >
         <Text className="text-white text-center font-semibold text-lg tracking-wide">
           {isNew ? "Create Task" : "Update Task"}
         </Text>
